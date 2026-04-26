@@ -1,4 +1,5 @@
 # RU:
+
 ---
 
 Файл сборки `.kpm` — это JSON-конфигурация, описывающая набор плагинов для установки через KPM **(Kangel Plugins Manager)**
@@ -19,7 +20,8 @@
     "metadata": {
         "name": "My Pack",
         "author": "username",
-        "description": "Описание сборки"
+        "description": "Описание сборки",
+        "icon": "pack_name/0"
     },
     "plugins": [
         "tg://kpm_install?plugin=example_plugin"
@@ -50,22 +52,25 @@
 "metadata": {
     "name": "Название сборки",
     "author": "Автор",
-    "description": "Описание"
+    "description": "Описание",
+    "icon": "pack_name/index"
 }
 ```
 
 #### Поля:
 
-| Поле          | Тип    | Описание         |
-| ------------- | ------ | ---------------- |
-| `name`        | string | Название сборки  |
-| `author`      | string | Автор (ник/имя)  |
-| `description` | string | Краткое описание |
+| Поле          | Тип    | Описание                                  |
+| ------------- | ------ | ----------------------------------------- |
+| `name`        | string | Название сборки                           |
+| `author`      | string | Автор (ник/имя)                           |
+| `description` | string | Краткое описание                          |
+| `icon`        | string | Иконка сборки в формате `pack_name/index` |
 
 📌 Рекомендации:
 
 * `name` — короткий и понятный
 * `description` — что делает сборка (например: "UI + утилиты + фан")
+* `icon` — валидный стикерпак и индекс
 
 ---
 
@@ -76,7 +81,9 @@
     "tg://kpm_install?plugin=ReMandre"
 ]
 ```
-Массив ссылок на плагины (БЕРУТСЯ ИЗ МАГАЗИНА KPM + ТУДА ПРОПИСЫВАЙ ВСЕ ЗАВИСИОМСТИ ТАКЖЕ) 
+
+Массив ссылок на плагины
+(**берутся из магазина KPM + сюда обязательно добавляй все зависимости**)
 
 #### Пример:
 
@@ -88,6 +95,21 @@
 ]
 ```
 
+---
+
+## ⚠️ Особенности `icon`
+
+* Формат строго:
+
+  ```text
+  pack_name/index
+  ```
+* Стикерпак должен существовать
+* Индекс не должен выходить за пределы
+* Если поле отсутствует — используется дефолтная иконка
+* При ошибке формат просто игнорируется (иконка не отобразится)
+
+---
 
 ## 🧪 Пример нормальной сборки
 
@@ -96,7 +118,8 @@
     "metadata": {
         "name": "Ultimate Pack",
         "author": "mandre",
-        "description": "UI + полезные утилиты + фан плагины"
+        "description": "UI + полезные утилиты + фан плагины",
+        "icon": "kangel_pack/5"
     },
     "plugins": [
         "tg://kpm_install?plugin=ReMandre",
@@ -135,7 +158,8 @@ Example:
     "metadata": {
         "name": "My Pack",
         "author": "username",
-        "description": "Build description"
+        "description": "Build description",
+        "icon": "pack_name/0"
     },
     "plugins": [
         "tg://kpm_install?plugin=example_plugin"
@@ -166,22 +190,25 @@ Example:
 "metadata": {
     "name": "Build name",
     "author": "Author",
-    "description": "Description"
+    "description": "Description",
+    "icon": "pack_name/index"
 }
 ```
 
 #### Fields:
 
-| Field         | Type   | Description            |
-| ------------- | ------ | ---------------------- |
-| `name`        | string | Build name             |
-| `author`      | string | Author (nickname/name) |
-| `description` | string | Short description      |
+| Field         | Type   | Description                            |
+| ------------- | ------ | -------------------------------------- |
+| `name`        | string | Build name                             |
+| `author`      | string | Author (nickname/name)                 |
+| `description` | string | Short description                      |
+| `icon`        | string | Build icon in `pack_name/index` format |
 
 📌 Recommendations:
 
 * `name` — keep it short and clear
-* `description` — explain what the build includes (e.g. "UI + utilities + fun")
+* `description` — explain what the build includes
+* `icon` — must point to a valid sticker pack and index
 
 ---
 
@@ -208,6 +235,20 @@ An array of plugin links
 
 ---
 
+## ⚠️ `icon` notes
+
+* Strict format:
+
+  ```text
+  pack_name/index
+  ```
+* Sticker pack must exist
+* Index must be valid
+* If not provided — default icon is used
+* Invalid format → icon will not be displayed
+
+---
+
 ## 🧪 Example of a valid build
 
 ```json
@@ -215,7 +256,8 @@ An array of plugin links
     "metadata": {
         "name": "Ultimate Pack",
         "author": "mandre",
-        "description": "UI + useful utilities + fun plugins"
+        "description": "UI + useful utilities + fun plugins",
+        "icon": "kangel_pack/5"
     },
     "plugins": [
         "tg://kpm_install?plugin=ReMandre",
@@ -230,6 +272,4 @@ An array of plugin links
 ```
 
 ---
-
-
 
